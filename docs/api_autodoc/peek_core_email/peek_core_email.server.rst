@@ -8,10 +8,10 @@
     :undoc-members:
     :show-inheritance:
 
-\(M\) InboxApiABC
+\(M\) EmailApiABC
 ----------------------
 
-.. automodule:: peek_core_email.server.InboxApiABC
+.. automodule:: peek_core_email.server.EmailApiABC
     :members:
     :undoc-members:
     :show-inheritance:

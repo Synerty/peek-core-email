@@ -1,8 +1,8 @@
 {
   "plugin": {
-    "title": "Inbox",
+    "title": "Email",
     "packageName": "peek_core_email",
-    "version":"0.7.6.3",
+    "version": "0.7.6.3",
     "buildNumber": "#PLUGIN_BUILD#",
     "buildDate": "#BUILD_DATE#",
     "creator": "Synerty Pty Ltd",
@@ -10,39 +10,15 @@
   },
   "requiresServices": [
     "server",
-    "client",
+    "admin",
     "storage"
   ],
-  "mobile": {
-    "showHomeLink": false,
-    "showInTitleBar": true,
-    "titleBarLeft": false,
-    "titleBarText": "Tasks",
-    "appDir": "_private/mobile-app",
-    "moduleDir": "plugin-module",
-    "assetDir": "_private/mobile-assets",
-    "appModule": "core-email.module#CoreEmailClientModule",
-    "rootServices": [
-      {
-        "file": "_private/private-inbox-tuple-provider.service",
-        "class": "PrivateInboxTupleProviderService"
-      },
-      {
-        "file": "core-email-root.service",
-        "class": "CoreEmailRootService",
-        "persistent": true
-      }
-    ],
-    "icon": null
-  },
   "admin": {
     "moduleDir": "plugin-module",
     "appDir": "_private/admin-app",
     "appModule": "core-email.module#CoreEmailAdminModule"
   },
   "server": {
-  },
-  "client": {
   },
   "storage": {
     "alembicDir": "_private/alembic"

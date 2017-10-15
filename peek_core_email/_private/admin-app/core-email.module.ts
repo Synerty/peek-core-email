@@ -3,8 +3,6 @@ import {FormsModule} from "@angular/forms";
 import {NgModule} from "@angular/core";
 import {CoreEmailAdminComponent} from "./core-email-admin.component";
 import {RouterModule, Routes} from "@angular/router";
-import {SendTestTaskComponent} from "./send-test-task/send-test-task.component";
-import {SendTestActivityComponent} from "./send-test-activity/send-test-activity.component";
 import {
     TupleActionPushNameService,
     TupleActionPushService,
@@ -13,13 +11,11 @@ import {
 } from "@synerty/vortexjs";
 
 import {
-    inboxActionProcessorName,
-    inboxFilt,
-    inboxObservableName
-} from "@peek/peek_core_email/core-email-names";
+    coreEmailActionProcessorName,
+    coreEmailFilt,
+    coreEmailObservableName
+} from "./PluginNames";
 import {AdminSettingListComponent} from "./setting-list/admin-setting-list.component";
-import {AdminTaskListComponent} from "./task-list/admin-task-list.component";
-import {AdminActivityListComponent} from "./activity-list/admin-activity-list.component";
 /**
  * Created by peek on 5/12/16.
  *
@@ -37,12 +33,12 @@ export const pluginRoutes: Routes = [
 
 export function tupleDataObservableNameServiceFactory() {
     return new TupleDataObservableNameService(
-        inboxObservableName, inboxFilt);
+        coreEmailObservableName, coreEmailFilt);
 }
 
 export function tupleActionPushNameServiceFactory() {
     return new TupleActionPushNameService(
-        inboxActionProcessorName, inboxFilt);
+        coreEmailActionProcessorName, coreEmailFilt);
 }
 
 @NgModule({

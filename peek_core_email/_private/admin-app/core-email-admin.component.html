@@ -1,16 +1,11 @@
 <div class="container">
-    <div class="row">
-        <h1 class="text-center">Active Task Plugin</h1>
-        <p>This admin page shows the status of each current task for each user device.</p>
-    </div>
-
     <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation">
-                <a href="#userTasks" aria-controls="emailIntro"
-                   role="tab" data-toggle="tab">Email</a>
-                </li>
+            <li role="presentation" class="active">
+                <a href="#emailIntro" aria-controls="emailIntro"
+                   role="tab" data-toggle="tab">Home</a>
+            </li>
             <li role="presentation">
                 <a href="#settings" aria-controls="settings"
                    role="tab" data-toggle="tab">Settings</a>
@@ -19,10 +14,9 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane" id="emailIntro">
-                <p>
-                    Peek Core Email Plugin.
-                </p>
+            <div role="tabpanel" class="tab-pane active" id="emailIntro">
+                <h1 class="text-center">Email Core Plugin</h1>
+                <p>This plugin sends emails and SMSs for other plugins.</p>
             </div>
             <div role="tabpanel" class="tab-pane" id="settings">
                 <core-email-setting-list></core-email-setting-list>

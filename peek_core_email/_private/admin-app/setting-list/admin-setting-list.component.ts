@@ -6,7 +6,7 @@ import {
     Tuple,
     extend
 } from "@synerty/vortexjs";
-import {inboxFilt} from "@peek/peek_core_email/core-email-names";
+import {coreEmailFilt} from "../PluginNames";
 
 
 class SettingProperty extends Tuple {
@@ -32,7 +32,7 @@ class SettingProperty extends Tuple {
 export class AdminSettingListComponent extends ComponentLifecycleEventEmitter implements OnInit {
     private readonly filt = extend({
         key: "server.setting.data"
-    },inboxFilt );
+    },coreEmailFilt );
 
     items: SettingProperty[] = [];
 

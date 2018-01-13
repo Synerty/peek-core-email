@@ -15,6 +15,8 @@
         "doc-admin"
     ],
     "doc-admin": {
+        "docDir": "doc-admin",
+        "docRst": "index.rst",
         "hasApi": true
     },
     "admin": {

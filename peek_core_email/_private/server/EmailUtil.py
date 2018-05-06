@@ -20,6 +20,11 @@ class SendEmail(object):
         """
         Send email to one or more addresses.
         """
+        if not self._enabled:
+            logger.debug("Email sending is disabled, not sending to '%s' for : %s",
+                         recipients, subject)
+            return
+
         if not recipients:
             raise Exception("Receipient is missing")
 

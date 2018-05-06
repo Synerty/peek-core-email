@@ -15,9 +15,9 @@ from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.sql.expression import cast, null, case
 from sqlalchemy.sql.schema import Index
 from sqlalchemy.types import Integer, String, Boolean
-from vortex.Tuple import Tuple, addTupleType
 
 from peek_core_email._private.PluginNames import inboxTuplePrefix
+from vortex.Tuple import Tuple, addTupleType
 from .DeclarativeBase import DeclarativeBase
 
 __author__ = 'synerty'
@@ -257,7 +257,6 @@ def _getSetting(ormSession, name, propertyDict, key=None, value=None):
     return setting[key]
 
 
-
 # =============================================================================
 # GLOBAL PROPERTIES
 # =============================================================================
@@ -275,5 +274,11 @@ EMAIL_SENDER = PropertyKey(
 EMAIL_SMTP_HOST = PropertyKey(
     'Email SMTP Server', 'smtp.company.com', propertyDict=globalProperties)
 
+EMAIL_ENABLED = PropertyKey(
+    'Email Enabled', False, propertyDict=globalProperties)
+
 SMS_NUMBER_EMAIL_POSTFIX = PropertyKey(
     'SMS Email Postfix', '@smsgateway.com', propertyDict=globalProperties)
+
+SMS_ENABLED = PropertyKey(
+    'SMS Enabled', False, propertyDict=globalProperties)

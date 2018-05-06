@@ -1,12 +1,11 @@
 import logging
 from typing import List
 
-from vortex.DeferUtil import deferToThreadWrapWithLogger
-
 from peek_core_email._private.server.EmailUtil import SendEmail
 from peek_core_email._private.storage import Setting
 from peek_core_email._private.storage.Setting import globalSetting
 from peek_core_email.server.EmailApiABC import EmailApiABC
+from vortex.DeferUtil import deferToThreadWrapWithLogger
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +25,12 @@ class EmailApi(EmailApiABC):
         try:
 
             settings = globalSetting(session)
+
+            if not settings[Setting.EMAIL_ENABLED]:
+                logger.debug("SMS sending is disabled, not sending to '%s' for : %s",
+                             mobile, contents)
+                return
+
             smsEmailPostfix = settings[Setting.SMS_NUMBER_EMAIL_POSTFIX]
 
             email = mobile + smsEmailPostfix
@@ -48,6 +53,14 @@ class EmailApi(EmailApiABC):
         session = self._ormSessionCreator()
 
         try:
+
+            settings = globalSetting(session)
+
+            if not settings[Setting.EMAIL_ENABLED]:
+                logger.debug("SMS sending is disabled, not sending to '%s' for : %s",
+                             addresses, subject)
+                return
+
             emailer = SendEmail(self._ormSessionCreator)
 
             emailer.sendBlocking(

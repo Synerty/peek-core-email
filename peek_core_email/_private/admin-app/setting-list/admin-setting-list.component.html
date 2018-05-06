@@ -11,13 +11,28 @@
                 </tr>
                 <tr *ngFor="let item of items">
                     <td>{{item.key}}</td>
-                    <td *ngIf="item.key.endsWith('pass')">
+                    <td *ngIf="item.type == 'boolean' ">
+                        <Button class="btn"
+                                [class.btn-success]="item.boolean_value"
+                                [class.btn-danger]="!item.boolean_value"
+                                (click)="item.boolean_value = ! item.boolean_value">
+                            {{item.boolean_value ? "True" : "False"}}
+                        </Button>
+                    </td>
+                    <td *ngIf="item.type == 'integer' ">
+                        <input [(ngModel)]="item.int_value"
+                               [name]="item.key"
+                               type="number"
+                               step="1"
+                               class="form-control input-sm"/>
+                    </td>
+                    <td *ngIf="item.key.endsWith('pass') && item.type == 'string' ">
                         <input [(ngModel)]="item.char_value"
                                [name]="item.key"
                                type="password"
                                class="form-control input-sm"/>
                     </td>
-                    <td *ngIf="!item.key.endsWith('pass')">
+                    <td *ngIf="!item.key.endsWith('pass') && item.type == 'string' ">
                         <input [(ngModel)]="item.char_value"
                                [name]="item.key"
                                class="form-control input-sm"/>

@@ -57,7 +57,7 @@ class EmailApi(EmailApiABC):
             settings = globalSetting(session)
 
             if not settings[Setting.EMAIL_ENABLED]:
-                logger.debug("SMS sending is disabled, not sending to '%s' for : %s",
+                logger.debug("Email sending is disabled, not sending to '%s' for : %s",
                              addresses, subject)
                 return
 

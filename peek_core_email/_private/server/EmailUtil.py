@@ -1,7 +1,6 @@
 import logging
 import smtplib
 from email.mime.text import MIMEText
-
 from typing import List
 
 from peek_core_email._private.storage import Setting
@@ -20,10 +19,6 @@ class SendEmail(object):
         """
         Send email to one or more addresses.
         """
-        if not self._enabled:
-            logger.debug("Email sending is disabled, not sending to '%s' for : %s",
-                         recipients, subject)
-            return
 
         if not recipients:
             raise Exception("Receipient is missing")

@@ -6,7 +6,7 @@ from setuptools import find_packages
 
 pip_package_name = "peek-core-email"
 py_package_name = "peek_core_email"
-package_version = '1.1.1'
+package_version = '1.1.3'
 
 egg_info = "%s.egg-info" % pip_package_name
 if os.path.isdir(egg_info):

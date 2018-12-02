@@ -7,6 +7,7 @@ import {
     extend
 } from "@synerty/vortexjs";
 import {coreEmailFilt} from "../PluginNames";
+import {Ng2BalloonMsgService} from "@synerty/ng2-balloon-msg";
 
 
 class SettingProperty extends Tuple {
@@ -38,7 +39,8 @@ export class AdminSettingListComponent extends ComponentLifecycleEventEmitter im
 
     loader: TupleLoader;
 
-    constructor(vortexService: VortexService) {
+    constructor(private balloonMsg: Ng2BalloonMsgService,
+                vortexService: VortexService) {
         super();
 
         this.loader = vortexService.createTupleLoader(this, this.filt);
@@ -48,6 +50,18 @@ export class AdminSettingListComponent extends ComponentLifecycleEventEmitter im
     }
 
     ngOnInit() {
+    }
+
+    saveClicked() {
+        this.loader.save()
+            .then(() => this.balloonMsg.showSuccess("Save Successful"))
+            .catch(e => this.balloonMsg.showError(e));
+    }
+
+    resetClicked() {
+        this.loader.load()
+            .then(() => this.balloonMsg.showSuccess("Reset Successful"))
+            .catch(e => this.balloonMsg.showError(e));
     }
 
 }

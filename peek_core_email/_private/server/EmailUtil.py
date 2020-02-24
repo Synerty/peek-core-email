@@ -1,5 +1,6 @@
 import logging
 import smtplib
+import socket
 from email.mime.text import MIMEText
 from typing import List
 
@@ -29,7 +30,12 @@ class SendEmail(object):
         msg['To'] = ', '.join(recipients)
         msg.preamble = subject
 
-        # Send the message via our own SMTP server.
-        s = smtplib.SMTP(self._smtpHost)
-        s.send_message(msg)
-        s.quit()
+        try:
+            # Send the message via our own SMTP server.
+            s = smtplib.SMTP(self._smtpHost)
+            s.send_message(msg)
+            s.quit()
+
+        except socket.gaierror as e:
+            logger.exception(e)
+            raise Exception("Peek failed to send your email, please contact Peek admins.")

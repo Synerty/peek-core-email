@@ -7,7 +7,7 @@ import {
     extend
 } from "@synerty/vortexjs";
 import {coreEmailFilt} from "../PluginNames";
-import {Ng2BalloonMsgService} from "@synerty/ng2-balloon-msg";
+import { BalloonMsgService } from "@synerty/peek-plugin-base-js"
 
 
 class SettingProperty extends Tuple {
@@ -39,7 +39,7 @@ export class AdminSettingListComponent extends ComponentLifecycleEventEmitter im
 
     loader: TupleLoader;
 
-    constructor(private balloonMsg: Ng2BalloonMsgService,
+    constructor(private balloonMsg: BalloonMsgService,
                 vortexService: VortexService) {
         super();
 

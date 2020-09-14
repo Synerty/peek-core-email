@@ -1,67 +1,58 @@
-import {Component, OnInit} from "@angular/core";
-import {
-    VortexService,
-    ComponentLifecycleEventEmitter,
-    TupleLoader,
-    Tuple,
-    extend
-} from "@synerty/vortexjs";
-import {coreEmailFilt} from "../PluginNames";
-import { BalloonMsgService } from "@synerty/peek-plugin-base-js"
-
+import { Component, OnInit } from "@angular/core"
+import { extend, Tuple, TupleLoader, VortexService } from "@synerty/vortexjs"
+import { coreEmailFilt } from "../PluginNames"
+import { BalloonMsgService, NgLifeCycleEvents } from "@synerty/peek-plugin-base-js"
 
 class SettingProperty extends Tuple {
-
-    id: number;
-    settingId: number;
-    key: string;
-    type: string;
-
-    int_value: number;
-    char_value: string;
-    boolean_value: boolean;
-
+    id: number
+    settingId: number
+    key: string
+    type: string
+    
+    int_value: number
+    char_value: string
+    boolean_value: boolean
+    
     constructor() {
-        super('c.s.p.setting.property')
+        super("c.s.p.setting.property")
     }
 }
 
 @Component({
-    selector: 'core-email-setting-list',
-    templateUrl: './admin-setting-list.component.html'
+    selector: "core-email-setting-list",
+    templateUrl: "./admin-setting-list.component.html"
 })
-export class AdminSettingListComponent extends ComponentLifecycleEventEmitter implements OnInit {
+export class AdminSettingListComponent extends NgLifeCycleEvents implements OnInit {
+    items: SettingProperty[] = []
+    loader: TupleLoader
     private readonly filt = extend({
         key: "server.setting.data"
-    },coreEmailFilt );
-
-    items: SettingProperty[] = [];
-
-    loader: TupleLoader;
-
-    constructor(private balloonMsg: BalloonMsgService,
-                vortexService: VortexService) {
-        super();
-
-        this.loader = vortexService.createTupleLoader(this, this.filt);
-
+    }, coreEmailFilt)
+    
+    constructor(
+        private balloonMsg: BalloonMsgService,
+        vortexService: VortexService
+    ) {
+        super()
+        
+        this.loader = vortexService.createTupleLoader(this, this.filt)
+        
         this.loader.observable.subscribe(
-            tuples => this.items = <SettingProperty[]>tuples);
+            tuples => this.items = <SettingProperty[]>tuples)
     }
-
+    
     ngOnInit() {
     }
-
+    
     saveClicked() {
         this.loader.save()
             .then(() => this.balloonMsg.showSuccess("Save Successful"))
-            .catch(e => this.balloonMsg.showError(e));
+            .catch(e => this.balloonMsg.showError(e))
     }
-
+    
     resetClicked() {
         this.loader.load()
             .then(() => this.balloonMsg.showSuccess("Reset Successful"))
-            .catch(e => this.balloonMsg.showError(e));
+            .catch(e => this.balloonMsg.showError(e))
     }
-
 }

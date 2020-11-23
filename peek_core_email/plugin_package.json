@@ -9,7 +9,7 @@
         "website": "www.synerty.com"
     },
     "requiresServices": [
-        "server",
+        "logic",
         "admin",
         "storage",
         "doc-dev",
@@ -29,7 +29,7 @@
         "appDir": "_private/admin-app",
         "appModule": "core-email.module#CoreEmailAdminModule"
     },
-    "server": {
+    "logic": {
     },
     "storage": {
         "alembicDir": "_private/alembic"

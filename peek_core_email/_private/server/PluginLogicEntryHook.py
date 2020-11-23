@@ -1,7 +1,7 @@
 import logging
 from typing import Optional
 
-from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
+from peek_plugin_base.server.PluginLogicEntryHookABC import PluginLogicEntryHookABC
 from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
     PluginServerStorageEntryHookABC
 
@@ -14,10 +14,10 @@ from peek_core_email._private.storage.DeclarativeBase import loadStorageTuples
 logger = logging.getLogger(__name__)
 
 
-class PluginServerEntryHook(PluginServerEntryHookABC,
+class PluginLogicEntryHook(PluginLogicEntryHookABC,
                             PluginServerStorageEntryHookABC):
     def __init__(self, *args, **kwargs):
-        PluginServerEntryHookABC.__init__(self, *args, **kwargs)
+        PluginLogicEntryHookABC.__init__(self, *args, **kwargs)
         self._api = None
 
         self._handlers = []

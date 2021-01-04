@@ -2,20 +2,20 @@ import logging
 from typing import Optional
 
 from peek_plugin_base.server.PluginLogicEntryHookABC import PluginLogicEntryHookABC
-from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
-    PluginServerStorageEntryHookABC
+from peek_plugin_base.server.PluginServerStorageEntryHookABC import (
+    PluginServerStorageEntryHookABC,
+)
 
-from peek_core_email._private.server.EmailApi import \
-    EmailApi
-from peek_core_email._private.server.admin_backend.PeekAdmSettingHandler import \
-    createAdminSettingsHandler
+from peek_core_email._private.server.EmailApi import EmailApi
+from peek_core_email._private.server.admin_backend.PeekAdmSettingHandler import (
+    createAdminSettingsHandler,
+)
 from peek_core_email._private.storage.DeclarativeBase import loadStorageTuples
 
 logger = logging.getLogger(__name__)
 
 
-class PluginLogicEntryHook(PluginLogicEntryHookABC,
-                            PluginServerStorageEntryHookABC):
+class PluginLogicEntryHook(PluginLogicEntryHookABC, PluginServerStorageEntryHookABC):
     def __init__(self, *args, **kwargs):
         PluginLogicEntryHookABC.__init__(self, *args, **kwargs)
         self._api = None
@@ -52,6 +52,7 @@ class PluginLogicEntryHook(PluginLogicEntryHookABC,
     @property
     def dbMetadata(self):
         from peek_core_email._private.storage import DeclarativeBase
+
         return DeclarativeBase.metadata
 
     ###### Publish our API

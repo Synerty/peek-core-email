@@ -1,26 +1,30 @@
 from typing import Type
 
-from peek_plugin_base.client.PluginClientEntryHookABC import \
-    PluginClientEntryHookABC
-from peek_plugin_base.server.PluginLogicEntryHookABC import \
-    PluginLogicEntryHookABC
+from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHookABC
+from peek_plugin_base.server.PluginLogicEntryHookABC import PluginLogicEntryHookABC
 
-__version__ = '0.0.0'
+__version__ = "0.0.0"
 
 
 def peekLogicEntryHook() -> Type[PluginLogicEntryHookABC]:
-    from peek_core_email._private.server.PluginLogicEntryHook import \
-        PluginLogicEntryHook
+    from peek_core_email._private.server.PluginLogicEntryHook import (
+        PluginLogicEntryHook,
+    )
+
     return PluginLogicEntryHook
 
 
 def peekOfficeEntryHook() -> Type[PluginClientEntryHookABC]:
-    from peek_core_email._private.client.PluginClientEntryHook import \
-        PluginClientEntryHook
+    from peek_core_email._private.client.PluginClientEntryHook import (
+        PluginClientEntryHook,
+    )
+
     return PluginClientEntryHook
 
 
 def peekFieldEntryHook() -> Type[PluginClientEntryHookABC]:
-    from peek_core_email._private.client.PluginClientEntryHook import \
-        PluginClientEntryHook
+    from peek_core_email._private.client.PluginClientEntryHook import (
+        PluginClientEntryHook,
+    )
+
     return PluginClientEntryHook

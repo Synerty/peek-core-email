@@ -16,7 +16,9 @@ class SendEmail(object):
         self._smtpHost = settings[Setting.EMAIL_SMTP_HOST]
         self._sender = settings[Setting.EMAIL_SENDER]
 
-    def sendBlocking(self, message: str, subject: str, recipients: List[str], html=False):
+    def sendBlocking(
+        self, message: str, subject: str, recipients: List[str], html=False
+    ):
         """
         Send email to one or more addresses.
         """
@@ -24,10 +26,10 @@ class SendEmail(object):
         if not recipients:
             raise Exception("Receipient is missing")
 
-        msg = MIMEText(message, 'html' if html else 'plain')
-        msg['Subject'] = subject
-        msg['From'] = self._sender
-        msg['To'] = ', '.join(recipients)
+        msg = MIMEText(message, "html" if html else "plain")
+        msg["Subject"] = subject
+        msg["From"] = self._sender
+        msg["To"] = ", ".join(recipients)
         msg.preamble = subject
 
         try:
@@ -38,4 +40,6 @@ class SendEmail(object):
 
         except socket.gaierror as e:
             logger.exception(e)
-            raise Exception("Peek failed to send your email, please contact Peek admins.")
+            raise Exception(
+                "Peek failed to send your email, please contact Peek admins."
+            )

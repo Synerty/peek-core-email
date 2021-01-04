@@ -27,8 +27,11 @@ class EmailApi(EmailApiABC):
             settings = globalSetting(session)
 
             if not settings[Setting.EMAIL_ENABLED]:
-                logger.debug("SMS sending is disabled, not sending to '%s' for : %s",
-                             mobile, contents)
+                logger.debug(
+                    "SMS sending is disabled, not sending to '%s' for : %s",
+                    mobile,
+                    contents,
+                )
                 return
 
             smsEmailPostfix = settings[Setting.SMS_NUMBER_EMAIL_POSTFIX]
@@ -38,18 +41,16 @@ class EmailApi(EmailApiABC):
 
             emailer = SendEmail(self._ormSessionCreator)
             emailer.sendBlocking(
-                message=contents,
-                subject="",
-                recipients=[email],
-                html=False
+                message=contents, subject="", recipients=[email], html=False
             )
 
         finally:
             session.close()
 
     @deferToThreadWrapWithLogger(logger)
-    def sendEmail(self, addresses: List[str], subject: str,
-                  contents: str, isHtml: bool) -> None:
+    def sendEmail(
+        self, addresses: List[str], subject: str, contents: str, isHtml: bool
+    ) -> None:
         session = self._ormSessionCreator()
 
         try:
@@ -57,17 +58,17 @@ class EmailApi(EmailApiABC):
             settings = globalSetting(session)
 
             if not settings[Setting.EMAIL_ENABLED]:
-                logger.debug("Email sending is disabled, not sending to '%s' for : %s",
-                             addresses, subject)
+                logger.debug(
+                    "Email sending is disabled, not sending to '%s' for : %s",
+                    addresses,
+                    subject,
+                )
                 return
 
             emailer = SendEmail(self._ormSessionCreator)
 
             emailer.sendBlocking(
-                message=contents,
-                subject=subject,
-                recipients=addresses,
-                html=isHtml
+                message=contents, subject=subject, recipients=addresses, html=isHtml
             )
 
         finally:

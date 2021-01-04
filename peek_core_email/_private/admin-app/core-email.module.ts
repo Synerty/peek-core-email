@@ -1,21 +1,22 @@
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
-import {NgModule} from "@angular/core";
-import {CoreEmailAdminComponent} from "./core-email-admin.component";
-import {RouterModule, Routes} from "@angular/router";
+import { CommonModule } from "@angular/common"
+import { FormsModule } from "@angular/forms"
+import { NgModule } from "@angular/core"
+import { CoreEmailAdminComponent } from "./core-email-admin.component"
+import { RouterModule, Routes } from "@angular/router"
 import {
     TupleActionPushNameService,
     TupleActionPushService,
     TupleDataObservableNameService,
     TupleDataObserverService
-} from "@synerty/vortexjs";
+} from "@synerty/vortexjs"
 
 import {
     coreEmailActionProcessorName,
     coreEmailFilt,
     coreEmailObservableName
-} from "./PluginNames";
-import {AdminSettingListComponent} from "./setting-list/admin-setting-list.component";
+} from "./PluginNames"
+import { AdminSettingListComponent } from "./setting-list/admin-setting-list.component"
+
 /**
  * Created by peek on 5/12/16.
  *
@@ -24,21 +25,20 @@ import {AdminSettingListComponent} from "./setting-list/admin-setting-list.compo
 
 export const pluginRoutes: Routes = [
     {
-        path: '',
+        path: "",
         component: CoreEmailAdminComponent
     }
 
-];
-
+]
 
 export function tupleDataObservableNameServiceFactory() {
     return new TupleDataObservableNameService(
-        coreEmailObservableName, coreEmailFilt);
+        coreEmailObservableName, coreEmailFilt)
 }
 
 export function tupleActionPushNameServiceFactory() {
     return new TupleActionPushNameService(
-        coreEmailActionProcessorName, coreEmailFilt);
+        coreEmailActionProcessorName, coreEmailFilt)
 }
 
 @NgModule({

@@ -1,10 +1,13 @@
 import { Component, OnInit } from "@angular/core"
-import { extend, Tuple, TupleLoader, VortexService } from "@synerty/vortexjs"
-import { coreEmailFilt } from "../PluginNames"
 import {
-    BalloonMsgService,
-    NgLifeCycleEvents
-} from "@synerty/peek-plugin-base-js"
+    extend,
+    NgLifeCycleEvents,
+    Tuple,
+    TupleLoader,
+    VortexService
+} from "@synerty/vortexjs"
+import { coreEmailFilt } from "../PluginNames"
+import { BalloonMsgService } from "@synerty/peek-plugin-base-js"
 
 class SettingProperty extends Tuple {
     id: number

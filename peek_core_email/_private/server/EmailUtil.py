@@ -1,4 +1,5 @@
 import logging
+import os
 import smtplib
 import socket
 from email.mime.text import MIMEText
@@ -35,6 +36,11 @@ class SendEmail(object):
         try:
             # Send the message via our own SMTP server.
             s = smtplib.SMTP(self._smtpHost)
+            if os.getenv("PEEK_SMTP_NEEDS_LOGIN_AND_TLS"):
+                s.starttls()
+                s.login(
+                    os.getenv("PEEK_SMTP_USER"), os.getenv("PEEK_SMTP_PASS")
+                )
             s.send_message(msg)
             s.quit()
 

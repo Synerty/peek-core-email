@@ -8,12 +8,7 @@
         "creator": "Synerty Pty Ltd",
         "website": "www.synerty.com"
     },
-    "requiresServices": [
-        "logic",
-        "admin",
-        "storage",
-        "admin-doc"
-    ],
+    "requiresServices": ["logic", "admin", "storage", "admin-doc"],
     "admin-doc": {
         "docDir": "admin-doc",
         "docRst": "index.rst",
@@ -24,8 +19,7 @@
         "appDir": "_private/admin-app",
         "appModule": "core-email.module#CoreEmailAdminModule"
     },
-    "logic": {
-    },
+    "logic": {},
     "storage": {
         "alembicDir": "_private/alembic"
     }

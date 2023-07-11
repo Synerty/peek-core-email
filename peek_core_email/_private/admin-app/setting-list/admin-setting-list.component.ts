@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import {
-    extend,
     NgLifeCycleEvents,
     Tuple,
     TupleLoader,
@@ -34,7 +33,7 @@ export class AdminSettingListComponent
 {
     items: SettingProperty[] = [];
     loader: TupleLoader;
-    private readonly filt = extend(
+    private readonly filt = Object.assign(
         {
             key: "server.setting.data",
         },

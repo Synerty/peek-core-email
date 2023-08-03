@@ -53,7 +53,7 @@ export class AdminSettingListComponent
         );
     }
 
-    ngOnInit() {}
+    override ngOnInit() {}
 
     saveClicked() {
         this.loader

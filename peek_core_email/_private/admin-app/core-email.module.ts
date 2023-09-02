@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { NgModule } from "@angular/core";
 import { CoreEmailAdminComponent } from "./core-email-admin.component";
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Route, Routes } from "@angular/router";
 import {
     TupleActionPushNameService,
     TupleActionPushService,
